@@ -2,9 +2,17 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 import datetime as dt
-import dataupdate
+from dataupdate import Update
+icon = Image.open('tslogo.jpg')
+st.set_page_config(
+    page_icon=icon,
+    page_title='Excelupdate',
+    layout= "wide"
+)
 
-dataupdate.all_col()
+
+
+
 #st.set_page_config(layout="wide")
 im = Image.open('thundersoft.png')
 
@@ -12,7 +20,8 @@ excel_data = pd.read_excel("demo2.xlsx")
 name = list(excel_data["EmployeeName"])
 #name = name.insert(0,"Select Employee Name")
 ids= list(excel_data['EmployeeID'])
-
+obj= Update()
+obj.all_col()
 
 def details(emp_inp,search_by):
 
@@ -30,12 +39,14 @@ def details(emp_inp,search_by):
         bench_days = 0
         proj1_days = 0
         proj2_days = 0
+        status="Bench"
 
         if on_board_date_proj1[0] == "None":
-            bench_days = (dt.datetime.now() - join_date[0]).days
+            bench_days = (dt.datetime.now().date() - join_date[0]).days
             print('1st if')
         elif (off_board_date_proj1[0]) == 'None' and (on_board_date_proj1[0]) != "None":
             print('2nd if')
+            status = "Project 1"
             # print(type(on_board_date_proj1[0]))
             bench_days += (on_board_date_proj1[0] - join_date[0]).days
         elif (off_board_date_proj1[0]) != "None" and (on_board_date_proj2[0]) == 'None':
@@ -46,42 +57,39 @@ def details(emp_inp,search_by):
             # print(bench_days)
         elif on_board_date_proj2[0] != "None" and off_board_date_proj2[0] == 'None':
             print('4th if')
+            status = "Project 2"
             proj1_days = (off_board_date_proj1[0] - on_board_date_proj1[0]).days
             bench_days += (on_board_date_proj2[0] - off_board_date_proj1[0]).days
             bench_days += (on_board_date_proj1[0] - join_date[0]).days
         elif off_board_date_proj2[0] != 'None':
             print('5th if')
             # bench_days += dt.datetime.now() - off_board_date_proj2[0]
-            bench_days += (on_board_date_proj2[0] - off_board_date_proj1[0]).days
-            bench_days += (on_board_date_proj1[0] - join_date[0]).days
-            bench_days += (dt.datetime.now() - off_board_date_proj2[0]).days
-            proj2_days = (off_board_date_proj2[0] - on_board_date_proj2[0]).days
-            proj1_days = (off_board_date_proj1[0] - on_board_date_proj1[0]).days
+            bench_days += (on_board_date_proj2[0].date() - off_board_date_proj1[0].date()).days
+            bench_days += (on_board_date_proj1[0].date() - join_date[0].date()).days
+            bench_days += (dt.datetime.now().date() - off_board_date_proj2[0].date()).days
+            proj2_days = (off_board_date_proj2[0].date() - on_board_date_proj2[0].date()).days
+            proj1_days = (off_board_date_proj1[0].date() - on_board_date_proj1[0].date()).days
         else:
             print('else')
             pass
-
-        # st.write('Project1 days:', proj1_days)
-        # st.write('Project2 days:', proj2_days)
-        # st.write(' Bench Days :', bench_days)
-        def bench_days_update():
-            pass
-
-        #excel_data.at[index_of_row, 'Bench Days'] = int(bench_days)
-        #print(excel_data.tail(5))
-        #excel_data.to_excel("demo2.xlsx",index=False)
-        #emp_det = excel_data.loc[excel_data[search_by] == emp_inp]
         st.write(emp_det)
         
-
+        lis= ['EmployeeName','EmployeeID' ] #,'Bench Days','Status']
         for i in emp_det:
+
             if i=='Bench Days':
-                st.write(i,":",bench_days)
+                st.write((i),":",bench_days)
                 st.write('Project1 days:' ,proj1_days)
                 st.write('Project2 days:' ,proj2_days)
+                st.write('Status:',status)
                 break
             else:
-                st.write(i, ":", list(emp_det[i])[0])
+                if i in lis:
+                    st.write(i,':',list(emp_det[i])[0])
+                # try:
+                #     st.write((i), ":", list(emp_det[i])[0].date())
+                # except:
+                #     st.write(i, ":", list(emp_det[i])[0])
 
 col1,col2,col3 = st.columns([5,5,5])
 with col1 :
