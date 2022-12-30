@@ -1,0 +1,9 @@
+a= input("Enter input:")
+
+def change(a):
+    lis=""
+    for i in a:
+        j= ord(i)
+        lis+=(chr(j+1))
+    print(lis)
+change(a)
