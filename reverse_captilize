@@ -1,0 +1,6 @@
+a=input("Enter The String:")
+
+def rev_cap():
+    print(a[::-1].upper())
+rev_cap()
+
