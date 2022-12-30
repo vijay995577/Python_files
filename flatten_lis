@@ -1,0 +1,13 @@
+inp = [4,6,7,[65,74,[4,8,[3,4,6],2],4],5,6,7,[32,21],4]
+
+ans= []
+def flat(inp):
+    #global ans
+    for i in inp:
+        if type(i)==list:
+            flat(i)
+        else:
+            ans.append(i)
+
+flat(inp)
+print("the flat  lis is :",ans)
