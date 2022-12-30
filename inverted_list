@@ -1,0 +1,15 @@
+lis=[int(i) for i in input("Enter numbers:").split()]
+
+def invert(lis):
+    res=[]
+    for i in lis:
+        if i > 0:
+            res.append(-i)
+        elif(i<0):
+            res.append(int(i) * -1 )
+        else:
+            res.append(i)
+    print(res)
+
+invert(lis)
+
