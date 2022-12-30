@@ -1,0 +1,17 @@
+
+
+def operation(lis):
+    if lis[1]== "+":
+        print(lis[0]+lis[2])
+    if lis[1]== "-":
+        print(lis[0]-lis[2])
+    if lis[1]== "*":
+        print(lis[0]*lis[2])
+    if lis[1]== "/":
+        if lis[2]==0:
+            print(None)
+        else:
+            print(round(lis[0]/lis[2],2))
+
+operation([10,'/',0])
+
