@@ -1,0 +1,26 @@
+def animals(Chicken,cow,pigs):
+    total=Chicken+cow+pigs
+    print(total)
+animals(2,4,4)
+
+#Back to Home
+
+dir=input()
+length=len(dir)
+n=0
+s=0
+e=0
+w=0
+for i in range(length):
+    if(dir[i]=="N"):
+        n+=1
+    if(dir[i]=="S"):
+        s+=1
+    if(dir[i]=="E"):
+        e+=1
+    if(dir[i]=="W"):
+        w+=1
+if(n==s and e==w):
+    print("True")
+else:
+    print("False")
