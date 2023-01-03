@@ -1,0 +1,15 @@
+import re
+#inp = input()
+inp = "IF[6*]a[5V]m"
+
+
+res=''
+for i in range(len(inp)):
+    if inp[i] == "[":
+        res+=(int(inp[i+1]) * inp[i+2])
+        #print(inp[:].index("]"))
+    elif inp[i] == "]" or inp[i].isdigit():
+        continue
+    else:
+        res+= inp[i]
+print(res)
