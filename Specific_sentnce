@@ -1,0 +1,15 @@
+sen = "i have cat. i have a MAT. what you have done."
+sen=sen.lower()
+inp= input("Enter word:").lower()
+def first_word(inp):
+    s=sen.split(".")
+    for i in s:
+        r= i.split()
+        if inp in r:
+            res=(" ".join(r) +".")
+            print(res)
+            break
+
+    #print(s)
+
+first_word(inp)
