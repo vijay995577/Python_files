@@ -1,0 +1,47 @@
+
+#To find given number is even or odd
+
+def eve():
+    if n%2 == 0:
+        print("even")
+    else:
+        print("odd")
+n=int(input())
+eve()
+
+#to find nth even number
+def neven(n):
+    return (n-1)*2
+n=int(input())
+neven1=neven(n)
+print(neven1)
+
+#__________________________________________________________________________#
+# FootballPoints
+
+def Points(wins,looses,draws):
+    wins1=wins*3
+    looses1=looses*0
+    draws1=draws*1
+    total=wins1+looses1+draws1
+    print(total)
+TeamA=Points(4,5,7)
+
+#Invert Keys &Values of a dictionary
+#_________________________________________________________________________#
+
+def inversion(dict1):
+    l1=[]
+    l2=[]
+    for x in dict1:
+        l1.append(x)
+    for x in dict1:
+        l2.append(dict1[x])
+    print(l1)
+    print(l2)
+    result=dict(zip(l2,l1))
+    print(result)
+    print(type(result))
+inversion({"A":1,"B":1,"c":23})
+#__________________________________________________________________________--
+
