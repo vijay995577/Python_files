@@ -1,0 +1,20 @@
+# inp = input().split()
+inp = ["h","v",5,2,'i',1]
+
+def alter_sort(inp):
+    nums = []
+    stri = []
+    for i in inp:
+        if str(i).isdigit():
+            nums.append(i)
+        else:
+            stri.append(i)
+    nums = sorted(nums)
+    stri = sorted(stri)
+    out = (list(zip(nums, stri)))
+    res = []
+    for i in out:
+        for j in i:
+            res.append(j)
+    print(res)
+alter_sort(inp)
