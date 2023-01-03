@@ -1,0 +1,80 @@
+def Rotateclock(lists,n):
+    outList=[]
+    for item in range(len(lists)-n,len(lists)):
+        outList.append(lists[item])
+    for item in range(0,len(lists)-n):
+        outList.append(lists[item])
+    return outList
+rotate_num=1
+list1=[2,3,4,5,1]
+print(Rotateclock(list1,rotate_num))
+
+#Stupid Addition
+def Stupid(x,y):
+    if type(x) is int and type(y) is int:
+        z=str(x)+str(y)
+        print(z)
+    if type(x) is str and type(y) is str:
+        z=int(x)+int(y)
+        print(z)
+    if type(x)is str and type(y) is int or type(x) is int and type(y) is str:
+        print("false")
+x=int(10)
+y=int(11)
+Stupid(x,y)
+Stupid("11","9")
+Stupid(11,"29")
+
+#Validate PIN
+import re
+def validpin(pin):
+    if re.fullmatch("\d{4}|\d{6}",pin):
+         print("True")
+    else:
+        print("False")
+
+validpin("100000")
+
+#wash your hands
+
+def washhands(n,nM):
+    washedsec=21
+    dayspermonth=30
+    perdaywashedseconds=21*n
+    minperday=perdaywashedseconds/60
+    nooftimeswashedminpermon=dayspermonth*minperday
+    totalduration=nooftimeswashedminpermon*nM
+    print(int(totalduration))
+washhands(8,7)
+
+
+#emphasise the word
+def emphasise(A):
+    z=A.title()
+    print(z)
+A="my name is"
+emphasise(A)
+
+#13 shift character to next character
+
+def shift(a):
+    lis=""
+    for i in a:
+        j=ord(i)
+        lis+=chr(j+1)
+    print(lis)
+shift("name")
+shift("hello")
+shift("welcome")
+#Validate Phone number
+
+
+import re
+def valid(s):
+    pattern=re.compile("(123)?(" ") [0-7]{7}")
+    return pattern.match(s)
+s="((123) 456-7890)"
+if valid(s):
+    print("True")
+else:
+    print("False")
