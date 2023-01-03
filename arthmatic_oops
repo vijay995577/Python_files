@@ -1,0 +1,31 @@
+class Arthimaticoperations:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+    def Add(self):
+        Addition=self.x+self.y
+        print(Addition)
+    def sub(self):
+        if self.x>self.y:
+            subraction=self.x-self.y
+        else:
+            subraction=self.y-self.x
+        print(subraction)
+    def div(self):
+        if self.x>self.y:
+            division=self.x/self.y
+        else:
+            division=self.y/self.x
+        print(division)
+    def mod(self):
+        mod=self.x % self.y
+        print(mod)
+    def mul(self):
+        mul=self.x*self.y
+        print(mul)
+cal=Arthimaticoperations(7,11)
+cal.Add()
+cal.sub()
+cal.div()
+cal.mul()
+cal.mod()
