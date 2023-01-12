@@ -1,0 +1,37 @@
+
+
+def donuts(cnt):
+    if int(cnt) >=10 :
+        print("No of  Donuts: Many")
+    else:
+        print("No of  Donuts:",cnt)
+
+def both_ends(s):
+    if len(s) <=2:
+        print("Both_ends: ")
+    else:
+        print("Both_ends: ",s[:2]+s[-2]+s[-1])
+
+def fix_start(s):
+    res=''
+    for i in s:
+        if i not in res:
+            res+= i
+        else:
+            res+= "*"
+    print("Fix_start: ",res)
+
+def mixup(a,b):
+    x= a[:2]+b[2:]
+    y=b[:2]+a[2:]
+    print("mix_up: ",x,y)
+
+mixup("vijay","balakula")
+
+fix_start("aardavark")
+
+
+both_ends('spring')
+
+
+donuts(20)
